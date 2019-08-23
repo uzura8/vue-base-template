@@ -14,7 +14,7 @@ module.exports = [
       index: path.join(root, 'src/js/index.js')
     },
     output: {
-      path: path.join(root, 'app/statics/js'),
+      path: path.join(root, 'public/assets/js'),
       filename: '[name].js'
     },
     optimization: {
@@ -82,7 +82,7 @@ module.exports = [
       style: path.join(root, 'src/scss/style.scss')
     },
     output: {
-      path: path.join(root, 'app/statics/css'),
+      path: path.join(root, 'public/assets/css'),
       filename: '[name].css'
     },
     module: {
@@ -108,7 +108,7 @@ module.exports = [
                   // Add vendor prefix
                   require('autoprefixer')({
                     grid: true, // use CSS Grid Layout
-                    browsers: ['Android >= 4.4', "IE 11"],
+                    //browsers: ['Android >= 4.4', "IE 11"],
                   })
                 ],
                 sourceMap: true

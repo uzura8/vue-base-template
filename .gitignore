@@ -11,27 +11,11 @@ tags
 .DS_Store
 Thumbs.db
 desktop.ini
-
-*.pyc
-/venv/*
-__pycache__
 tags
 
-.Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-.venv
-pip-selfcheck.json
-/instance/
-adapter.wsgi
+package-lock.json
+/node_modules/
 
 /var/*
-
-package-lock.json
-/node_modules/*
-/app/statics/*/*.map
+/public/assets/js/*
+/public/assets/css/*
