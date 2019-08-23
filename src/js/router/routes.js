@@ -1,6 +1,6 @@
-import Top from '../templates/top';
-import About from '../templates/about';
-import NotFound from '../templates/notfound';
+import Top from '../templates/Top';
+import About from '../templates/About';
+import NotFound from '../templates/Notfound';
 
 export default [
   {
