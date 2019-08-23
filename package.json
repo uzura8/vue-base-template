@@ -1,0 +1,49 @@
+{
+  "name": "frontend-webpack-vue-babel",
+  "version": "1.0.0",
+  "description": "Frontend base template by Vue and Babel builded by webpack",
+  "main": "src/js/index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shingo Yamada",
+  "license": "MTI",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/uzura8/vue-base-template.git"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "axios": "^0.19.0",
+    "buefy": "^0.8.2",
+    "es6-promise": "^4.2.8",
+    "moment": "^2.24.0",
+    "vue": "^2.6.10",
+    "vue-flatpickr-component": "^8.1.2",
+    "vue-router": "^3.1.2",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^1.4.1",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  }
+}
