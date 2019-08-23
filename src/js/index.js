@@ -1,41 +1,55 @@
-import {Vue, VueRouter} from './bootstrap';
+import Vue from 'vue'
+import 'es6-promise/auto'
+import router from './router'
+import store from './store'
 import './common';
 
-import store from './store'
+import Buefy from 'buefy'
+Vue.use(Buefy)
 
-import Top from './templates/top';
-import About from './templates/about';
-import NotFound from './templates/notfound';
-
-const router = new VueRouter({
-  mode: 'history',
-  saveScrollPosition: true,
-  routes: [
-    { path: '/', component: Top },
-    { path: '/about', component: About },
-    { path: '/notfound', component: NotFound },
-    { path: '*', redirect: '/notfound' }
-  ],
-  scrollBehavior (to, from, savedPosition) {
-    if (to.hash) {
-      return { selector: to.hash };
-    } else if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { x: 0, y: 0 };
-    }
-  }
+import moment from 'moment'
+import 'moment/locale/ja'
+moment.locale('ja');
+Vue.filter('dateFormat', function (date, format='LLL') {
+  return moment(date).format(format);
 });
 
-router.beforeEach((to, from, next) => {
-  store.dispatch('setHeaderMenuOpen', false)
-  next();
+//import VeeValidate from 'vee-validate'
+//Vue.use(VeeValidate)
+
+import util from './util'
+import listener from './listener'
+import site from './site'
+Vue.mixin({
+  methods: {
+    siteUri: site.uri,
+    siteConfig: site.config,
+    isEmpty: util.isEmpty,
+    inArray: util.inArray,
+    listen: listener.listen,
+    destroyed: listener.destroyed,
+    getCategoryLabel: function(category) {
+      if (util.isEmpty(category)) return ''
+      if (!util.isEmpty(category.sublabel)) return category.sublabel
+      return category.name
+    },
+  },
 });
+
+Vue.filter('numFormat', function (num) {
+  num = parseInt(num)
+  if (isNaN(num)) return 0
+  return String(num).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+});
+Vue.filter('substr', function (text, num) {
+  return util.substr(text, num, '...')
+});
+
+//import flatPickr from 'vue-flatpickr-component'
+//Vue.component('flatPickr', flatPickr)
 
 new Vue({
   el: '#app',
-  data: {
-  },
   computed: {
     isHeaderMenuOpen: function () {
       return store.state.common.isHeaderMenuOpen
@@ -49,3 +63,4 @@ new Vue({
   store,
   router,
 });
+
