@@ -21,5 +21,4 @@ package-lock.json
 
 /var/*
 /src/js/configs/config.json
-/public/assets/js/*
-/public/assets/css/*
+/public/assets/*/*.map
