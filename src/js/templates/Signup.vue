@@ -3,9 +3,9 @@
   <h1 class="title">Sign Up</h1>
 
   <div class="field">
-    <label class="label">Username</label>
+    <label class="label">Email</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" type="text" placeholder="Username" v-model="username">
+      <input class="input" type="text" placeholder="Email" v-model="username">
     </div>
   </div>
 
