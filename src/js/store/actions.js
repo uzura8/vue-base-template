@@ -1,5 +1,5 @@
 import * as types from './mutation-types'
-import { Performance, Transaction, TransactionPreset, Account, Category, Budget } from '../api'
+import { Firebase, Transaction } from '../api'
 
 export default {
   setHeaderMenuOpen: ({ commit }, isOpen) => {
@@ -8,6 +8,45 @@ export default {
 
   setIsLoading: ({ commit }, isLoading) => {
     commit(types.SET_COMMON_LOADING, isLoading)
+  },
+
+  signIn: ({ commit }, payload) => {
+    commit(types.SET_COMMON_LOADING, true)
+    return Firebase.signIn(payload)
+      .then(result => {
+        commit(types.SET_COMMON_LOADING, false)
+        commit(types.AUTH_SET_USER, result.user.uid)
+        commit(types.AUTH_UPDATE_STATE, true)
+        commit(types.AUTH_SET_ERROR, null)
+      })
+      .catch(error => {
+        commit(types.SET_COMMON_LOADING, false)
+        commit(types.AUTH_UPDATE_STATE, false)
+        commit(types.AUTH_SET_ERROR, error.message)
+      })
+  },
+
+  signOut: ({ commit }) => {
+    commit(types.SET_COMMON_LOADING, true)
+    return Firebase.signOut()
+      .then(result => {
+        console.log(result)
+        commit(types.SET_COMMON_LOADING, false)
+        commit(types.AUTH_SET_USER, null)
+        commit(types.AUTH_UPDATE_STATE, false)
+        commit(types.AUTH_SET_ERROR, null)
+      })
+      .catch(error => {
+        commit(types.SET_COMMON_LOADING, false)
+        commit(types.AUTH_SET_ERROR, error.message)
+      })
+  },
+
+  updateAuthState: ({ commit }, user) => {
+    user = user ? user : {};
+    commit(types.AUTH_SET_USER, user.uid)
+    commit(types.AUTH_UPDATE_STATE, user.uid ? true : false)
+    commit(types.AUTH_SET_ERROR, null)
   },
 
   fetchTransactions: ({ commit }, payload) => {

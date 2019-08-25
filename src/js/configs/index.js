@@ -1,10 +1,10 @@
-import configs from './config/site.json';
+import configs from './config.json';
 
 export default {
   uri: function (path) {
     return configs.BASE_URL + path.replace(/^\//, '');
   },
-  config: function (keyStr) {
+  get: function (keyStr) {
     const items = keyStr.split('.')
     let value = configs;
     for (let i = 0, n = items.length; i < n; i++) {

@@ -1,6 +1,9 @@
 import Top from '../templates/Top';
 import About from '../templates/About';
 import NotFound from '../templates/Notfound';
+import Signup from '../templates/Signup'
+import Signin from '../templates/Signin'
+import MemberTop from '../templates/MemberTop'
 
 export default [
   {
@@ -18,6 +21,22 @@ export default [
   //  path: '/login',
   //  component: LoginView
   //},
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path: '/signin',
+    name: 'Signin',
+    component: Signin
+  },
+  {
+    path: '/member',
+    name: 'MemberTop',
+    component: MemberTop,
+    meta: { requiresAuth: true }
+  },
   { path: '/about', component: About },
   { path: '/notfound', component: NotFound },
   { path: '*', redirect: '/notfound' }

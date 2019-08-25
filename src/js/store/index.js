@@ -11,6 +11,11 @@ const state = {
     isLoading: false,
     isHeaderMenuOpen: false,
   },
+  auth: {
+    state: false,
+    user: null,
+    error: null,
+  },
   transaction: {
     list: [],
   },

@@ -16,6 +16,10 @@ tags
 package-lock.json
 /node_modules/
 
+/.firebase/
+/firebase-debug.log
+
 /var/*
+/src/js/configs/config.json
 /public/assets/js/*
 /public/assets/css/*

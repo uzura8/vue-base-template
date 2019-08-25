@@ -1,8 +1,11 @@
-import Vue from 'vue'
 import 'es6-promise/auto'
+import Vue from 'vue'
 import router from './router'
 import store from './store'
 import './common';
+
+import Firebase from './firebase'
+Firebase.init()
 
 import Buefy from 'buefy'
 Vue.use(Buefy)
@@ -19,11 +22,16 @@ Vue.filter('dateFormat', function (date, format='LLL') {
 
 import util from './util'
 import listener from './listener'
-import site from './site'
+import config from './configs'
 Vue.mixin({
+  computed: {
+    isAuth: function () {
+      return this.$store.state.auth.state
+    },
+  },
   methods: {
-    siteUri: site.uri,
-    siteConfig: site.config,
+    siteUri: config.uri,
+    getConfig: config.get,
     isEmpty: util.isEmpty,
     inArray: util.inArray,
     listen: listener.listen,
@@ -32,6 +40,13 @@ Vue.mixin({
       if (util.isEmpty(category)) return ''
       if (!util.isEmpty(category.sublabel)) return category.sublabel
       return category.name
+    },
+    signout: function() {
+      this.$store.dispatch('signOut')
+        .then(() => {
+          this.$router.push({ path:'/signin' })
+        })
+        .catch(err => this.throwReject(err))
     },
   },
 });
@@ -51,9 +66,14 @@ Vue.filter('substr', function (text, num) {
 new Vue({
   el: '#app',
   computed: {
+    isLoading () {
+      return store.state.common.isLoading
+    },
     isHeaderMenuOpen: function () {
       return store.state.common.isHeaderMenuOpen
     },
+  },
+  created: function () {
   },
   methods: {
     toggleHeaderMenuOpen: function () {

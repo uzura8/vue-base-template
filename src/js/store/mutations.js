@@ -1,5 +1,4 @@
 import * as types from './mutation-types'
-import util from '../util';
 
 export default {
   [types.SET_COMMON_LOADING] (state, isLoading) {
@@ -8,6 +7,22 @@ export default {
 
   [types.SET_COMMON_HEADER_MENU_OPEN] (state, isOpen) {
     state.common.isHeaderMenuOpen = isOpen
+  },
+
+  [types.AUTH_SET_USER] (state, payload) {
+    state.auth.user = payload
+  },
+
+  [types.AUTH_REMOVE_USER] (state) {
+    state.auth.user = null
+  },
+
+  [types.AUTH_UPDATE_STATE] (state, payload) {
+    state.auth.state = payload
+  },
+
+  [types.AUTH_SET_ERROR] (state, payload) {
+    state.auth.error = payload
   },
 
   [types.FETCH_TRANSACTIONS_LIST] (state, payload) {
