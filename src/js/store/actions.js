@@ -26,6 +26,22 @@ export default {
       })
   },
 
+  googleSignIn: ({ commit }) => {
+    commit(types.SET_COMMON_LOADING, true)
+    return Firebase.googleSignIn()
+      .then(result => {
+        commit(types.SET_COMMON_LOADING, false)
+        commit(types.AUTH_SET_USER, result.user.uid)
+        commit(types.AUTH_UPDATE_STATE, true)
+        commit(types.AUTH_SET_ERROR, null)
+      })
+      .catch(error => {
+        commit(types.SET_COMMON_LOADING, false)
+        commit(types.AUTH_UPDATE_STATE, false)
+        commit(types.AUTH_SET_ERROR, error.message)
+      })
+  },
+
   signOut: ({ commit }) => {
     commit(types.SET_COMMON_LOADING, true)
     return Firebase.signOut()

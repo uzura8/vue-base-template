@@ -16,9 +16,15 @@
     </div>
   </div>
 
-  <div class="field is-grouped">
+  <div class="field">
     <div class="control">
       <button class="button is-link" @click="signIn">Sign In</button>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <b-button block variant="primary" @click="googleSignIn">Google Sign In</b-button>
     </div>
   </div>
 
@@ -58,6 +64,17 @@ export default {
           this.throwReject(err)
         })
     },
+
+    googleSignIn() {
+      this.$store.dispatch('googleSignIn')
+        .then(() => {
+          this.$router.push('/member')
+        })
+        .catch(err => {
+          this.throwReject(err)
+        })
+    },
+
     throwReject (err) { return Promise.reject(err) }
   }
 }
