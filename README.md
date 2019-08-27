@@ -1,1 +1,1 @@
-# vue-template
+# vue-firebase-template
