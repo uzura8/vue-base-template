@@ -16,6 +16,8 @@ tags
 package-lock.json
 /node_modules/
 
+/src/js/config/config.json
+
 /var/*
 /public/assets/js/*
 /public/assets/css/*

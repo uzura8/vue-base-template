@@ -1,5 +1,5 @@
 import util from '../util'
-import { moment } from '../bootstrap';
+import moment from 'moment';
 
 export default {
   sortedTransactions: state => (categoryId, sortKey) => {
