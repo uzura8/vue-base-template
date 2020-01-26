@@ -22,7 +22,7 @@ Vue.filter('dateFormat', function (date, format='LLL') {
 
 import util from './util'
 import listener from './listener'
-import config from './configs'
+import config from './config'
 Vue.mixin({
   computed: {
     isAuth: function () {
