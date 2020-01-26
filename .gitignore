@@ -18,6 +18,7 @@ package-lock.json
 
 /.firebase/
 /firebase-debug.log
+/src/js/config/config.json
 
 /var/*
 /src/js/configs/config.json
