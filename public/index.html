@@ -25,7 +25,10 @@
       <span></span>
     </div>
   </div>
-  <div class="navbar-menu" v-bind:class="{'is-active': isHeaderMenuOpen}">
+  <div
+    v-bind:class="{'is-active': isHeaderMenuOpen}"
+    class="navbar-menu"
+  >
     <div class="navbar-start">
       <router-link
         to="/"
