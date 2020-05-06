@@ -7,6 +7,7 @@ import './common';
 import Buefy from 'buefy'
 Vue.use(Buefy)
 
+console.log(Buefy);//!!!!!!
 
 import moment from 'moment'
 import 'moment/locale/ja'
