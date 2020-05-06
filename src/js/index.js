@@ -7,6 +7,8 @@ import './common';
 import Buefy from 'buefy'
 Vue.use(Buefy)
 
+// hogehoge
+
 import moment from 'moment'
 import 'moment/locale/ja'
 moment.locale('ja');
