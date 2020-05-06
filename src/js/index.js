@@ -14,9 +14,6 @@ Vue.filter('dateFormat', function (date, format='LLL') {
   return moment(date).format(format);
 });
 
-//import VeeValidate from 'vee-validate'
-//Vue.use(VeeValidate)
-
 import util from './util'
 import listener from './listener'
 import site from './site'
