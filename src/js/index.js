@@ -42,9 +42,6 @@ Vue.filter('substr', function (text, num) {
   return util.substr(text, num, '...')
 });
 
-//import flatPickr from 'vue-flatpickr-component'
-//Vue.component('flatPickr', flatPickr)
-
 new Vue({
   el: '#app',
   computed: {
