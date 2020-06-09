@@ -1,29 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store'
+import store from '@/store'
+import config from '@/config/config'
 import routes from './routes'
-//import { authorizeToken } from './guards'
 
 Vue.use(Router)
 
+const routerMode = config.routerMode || 'history'
 const router = new Router({
-  mode: 'history',
+  mode: routerMode,
   saveScrollPosition: true,
   routes,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
-      return { selector: to.hash };
+      return { selector: to.hash }
     } else if (savedPosition) {
       return savedPosition;
     } else {
-      return { x: 0, y: 0 };
+      return { x: 0, y: 0 }
     }
   }
-});
-//router.beforeEach(authorizeToken)
+})
+
 router.beforeEach((to, from, next) => {
   store.dispatch('setHeaderMenuOpen', false)
-  next();
-});
+  next()
+})
 
 export default router
